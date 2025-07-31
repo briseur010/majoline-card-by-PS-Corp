@@ -1,299 +1,257 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* VARIABLES CSS - Pour une gestion facile des couleurs et autres propriétés récurrentes */
+:root {
+  --primary-text-color: #333; /* Gris très foncé pour le nom et les titres */
+  --secondary-text-color: #555; /* Gris foncé pour la fonction, l'adresse */
+  --light-text-color: #777; /* Pour des textes plus légers comme "Contacts" */
+  --background-color: #f7f7f7;
+  --card-background: white;
+  --shadow-color: rgba(0,0,0,0.15); /* Ombre plus subtile */
+  --border-radius: 10px;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 40px;
+
+  /* Couleurs spécifiques aux plateformes (les icônes sont colorées, les boutons sont blancs avec bordure subtile) */
+  --whatsapp-icon-color: #25D366; /* Vert WhatsApp officiel */
+  --email-icon-color: #D44638;    /* Rouge/Orange de Gmail pour l'exemple */
+  --button-border-color: #ddd;   /* Couleur de la bordure subtile des boutons */
+  --button-text-color: #333;     /* Couleur du texte des boutons */
 }
 
+/* Styles généraux du corps */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #f8f6f6 0%, #2c2b2d 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif; /* Utilisation de la police Inter */
+  margin: 0;
+  padding: var(--spacing-md);
+  box-sizing: border-box; /* S'assure que le padding n'augmente pas la taille totale */
 }
-
+ .banner {
+      width: 100%;
+      height: 200px;
+      background: url('istockphoto-.jpg') center/cover no-repeat;
+    }
+/* Conteneur principal (facultatif si la carte est le seul élément centré) */
 .container {
-    width: 100%;
-    max-width: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Style de la carte de profil */
 .profile-card {
-    background: rgba(196, 187, 187, 0.95);
-    backdrop-filter: blur(20px);
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    animation: slideUp 0.6s ease-out;
+  width: 100%;
+  max-width: 380px; /* Largeur maximale pour la carte */
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 20px var(--shadow-color); /* Ombre plus douce et étendue */
+  text-align: left; /* Alignement du texte à gauche par défaut */
+  overflow: hidden; /* S'assure que le contenu ne dépasse pas les bords arrondis */
 }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.profile-image {
-    margin-bottom: 50;
-}
-
-.profile-top {
-    height: 220px;
-    width: 400px;
-    background-image: url("./istockphoto-.jpg");
-    background-position: center;
-    background-size: cover;
-    position: relative;
+/* Section de l'en-tête de la carte (bande supérieure) */
+.card-header {
+  background-image: url('https://via.placeholder.com/380x120/007bff/ffffff?text=Background+Image'); /* Remplace par ton image de fond */
+  /* Exemple d'une image de fond plus cohérente avec une carte professionnelle: */
+  /* background-image: url('https://images.unsplash.com/photo-1517486804595-d227447493a3?fit=crop&w=380&h=120&q=80'); */
+  background-size: cover;
+  background-position: center;
+  height: 120px; /* Hauteur fixe pour l'image de fond */
+  position: relative; /* Pour positionner la photo de profil par rapport à cet élément */
+  display: flex; /* Pour centrer le texte de l'en-tête */
+  justify-content: center;
+  align-items: flex-start; /* Aligner en haut pour le texte */
+  padding-top: var(--spacing-sm); /* Espacement en haut pour le texte */
 }
 
-.profile-image{
-     background-image: url("./mg.jpg");
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    border-radius: 50%;
-    border: 3px solid rgba(196, 187, 187, 0.95);
-    position: absolute;
-    bottom: 0;
-    left: 22%;
-    transform: translate(-50%, -50%);
-}
-.social-links {
-    margin-top: 30px;
+/* Texte de marque dans l'en-tête */
+.header-text {
+  color: white;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* Ombre prononcée pour la lisibilité */
+  font-size: 0.9em;
+  background-color: rgba(0,0,0,0.2); /* Fond semi-transparent pour le texte */
+  padding: 3px 8px;
+  border-radius: 5px;
 }
 
-.brand {
-    color: white;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(11, 11, 11, 0.3);
-    
+/* Conteneur et style de la photo de profil */
+.profile-photo-container {
+  position: absolute;
+  top: -10px; /* Positionnement à cheval sur l'en-tête et le corps */
+  left: 50%;
+  transform: translateX(-50%); /* Centrage parfait */
+  width: 100px; /* Taille de la photo */
+  height: 100px;
+  border-radius: 50%; /* Rendre le conteneur rond */
+  background-color: white; /* Fond blanc derrière la photo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px var(--shadow-color); /* Ombre pour la photo */
+  overflow: hidden; /* S'assurer que l'image ne dépasse pas */
+  border: 3px solid white; /* Bordure blanche autour de la photo */
 }
 
-.profile-section {
-    padding: 0 30px;
-    text-align: center;
-    transform: translateY(-30px);
+.profile-photo {
+  width: 100%; /* L'image remplit le conteneur */
+  height: 100%;
+  object-fit: cover; /* Recadre l'image pour qu'elle remplisse le conteneur */
+  border-radius: 50%; /* Assure que l'image elle-même est ronde si le conteneur est rond */
 }
 
-.profile-image {
-    display: inline-block;
-    position: relative;
-    margin-bottom: 20px;
+/* Corps de la carte */
+.card-body {
+  padding: calc(var(--spacing-md) + 0px) var(--spacing-md) var(--spacing-md) var(--spacing-md); /* Espace pour la photo de profil et padding général */
+  text-align: center; /* Centrer le nom et la fonction */
 }
 
-
-.profile-image img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 6px solid white;
-    box-shadow: 0 8px 24px rgba(125, 118, 118, 0.15);
-    transition: transform 0.3s ease;
+/* Nom de la personne */
+.card-body .name {
+  margin: 0;
+  font-size: 1.8em;
+  color: var(--primary-text-color);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.profile-image:hover img {
-    transform: scale(1.05);
+/* Titre/Fonction de la personne */
+.card-body .title {
+  margin: 5px 0 25px 0; /* Plus d'espace après la fonction */
+  font-size: 1.1em;
+  color: var(--secondary-text-color);
+  font-weight: 400;
 }
 
-.profile-info {
-    margin-bottom: 30px;
+/* Titres de section (ex: Contacts, Adresse) */
+.section-title {
+  font-size: 0.9em;
+  color: var(--light-text-color);
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+  text-align: left; /* Aligner les titres de section à gauche */
+  padding: 0 var(--spacing-md); /* Padding pour aligner avec les éléments du corps */
+  font-weight: 500; /* Poids moyen */
+  text-transform: uppercase; /* Majuscules */
+  letter-spacing: 0.5px;
 }
 
-.name {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 8px;
-    line-height: 1.2;
+/* Section adresse */
+.address-section {
+  padding: 0 var(--spacing-md);
+  margin-bottom: var(--spacing-md); /* Espace après l'adresse */
+}
+.address-section p {
+  margin: 0;
+  color: var(--secondary-text-color);
+  font-size: 1.0em;
+  display: flex; /* Pour aligner l'icône Ionicon avec le texte */
+  align-items: center;
+}
+.address-section ion-icon {
+  margin-right: 5px; /* Espacement entre l'icône et le texte */
+  font-size: 1.2em; /* Taille de l'icône */
+  color: var(--light-text-color); /* Couleur de l'icône */
 }
 
-.title {
-    font-size: 1rem;
-    color: #666;
-    font-weight: 400;
+/* Conteneur des liens sociaux */
+.social-links-container {
+  padding: 0 var(--spacing-md); /* Padding pour aligner les boutons */
 }
 
-.social-links {
-    padding: 0 30px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-height: 500px;
-    overflow-y: auto;
-}
-
-.social-links::-webkit-scrollbar {
-    width: 6px;
-}
-
-.social-links::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-.social-links::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 10px;
-}
-
-.social-links::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
-}
-
+/* Styles des liens sociaux (boutons) */
 .social-link {
-    display: flex;
-    align-items: center;
-    padding: 16px 20px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm); /* Moins de marge entre les boutons */
+  height: 48px; /* Hauteur fixe pour les boutons */
+  background-color: var(--card-background); /* Fond blanc */
+  border: 1px solid var(--button-border-color); /* Bordure subtile */
+  border-radius: 24px; /* Rend les boutons pilule */
+  text-decoration: none;
+  font-weight: 500; /* Texte des boutons en poids moyen */
+  color: var(--button-text-color); /* Couleur du texte des boutons */
+  transition: box-shadow 0.2s ease, border-color 0.2s ease; /* Transition douce */
 }
 
-.social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.social-link:last-child {
+  margin-bottom: 0; /* Pas de marge après le dernier bouton */
 }
 
 .social-link .icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 20px; /* Icônes légèrement plus petites */
+  height: 20px;
+  margin-right: 10px; /* Espacement icône-texte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Pour les icônes SVG dans les liens sociaux */
 .social-link .icon svg {
-    width: 20px;
-    height: 20px;
+  width: 100%;
+  height: 100%;
 }
 
-/* Couleurs spécifiques pour chaque réseau social */
+/* Couleurs des icônes spécifiques */
+.social-link.whatsapp .icon svg {
+  fill: var(--whatsapp-icon-color);
+}
+/* Pas besoin de fill: currentColor pour l'email si le SVG a déjà des couleurs intégrées */
 
-.whatsapp:hover {
-    background: #25d366;
-    color: white;
-    border-color: #25d366;
+/* Effets au survol des liens sociaux */
+.social-link:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre au survol */
+}
+.social-link.whatsapp:hover {
+  border-color: var(--whatsapp-icon-color); /* Bordure verte au survol de WhatsApp */
+}
+.social-link.email:hover {
+  border-color: var(--email-icon-color); /* Bordure rouge au survol de l'Email */
 }
 
-
-
-.email:hover {
-    background: #ea4335;
-    color: white;
-    border-color: #ea4335;
-}
-
-
+/* Message de pied de page */
 .footer-message {
-    padding: 0 30px 30px;
-    text-align: center;
+  padding: var(--spacing-sm) var(--spacing-md) 0 var(--spacing-md);
+  font-size: 0.9em;
+  color: var(--light-text-color);
+  text-align: center; /* Centrer le message du pied de page */
+  margin-top: var(--spacing-md);
 }
-
 .footer-message p {
-    color: #539995;
-    font-size: 0.9rem;
-    font-style: italic;
-    line-height: 1.5;
+    margin: 0; /* Supprimer les marges par défaut des paragraphes */
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-    
-    .profile-card {
-        border-radius: 20px;
-    }
-    
-    .header {
-        padding: 30px 15px 50px;
-    }
-    
-    .brand {
-        font-size: 2rem;
-    }
-    
-    .profile-section {
-        padding: 0 20px;
-    }
-    
-    .profile-image img {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .name {
-        font-size: 1.3rem;
-    }
-    
-    .social-links {
-        padding: 0 20px 20px;
-        gap: 10px;
-        max-height: 350px;
-    }
-    
-    .social-link {
-        padding: 14px 16px;
-        border-radius: 14px;
-    }
-    
-    .footer-message {
-        padding: 0 20px 20px;
-    }
-}
 
-/* Loading animation */
-.profile-card * {
-    animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0;
-}
-
-.profile-card *:nth-child(1) { animation-delay: 0.1s; }
-.profile-card *:nth-child(2) { animation-delay: 0.2s; }
-.profile-card *:nth-child(3) { animation-delay: 0.3s; }
-.profile-card *:nth-child(4) { animation-delay: 0.4s; }
-.profile-card *:nth-child(5) { animation-delay: 0.5s; }
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Hover effects for the entire card */
-.profile-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-/* Subtle pulse animation for the profile image */
-@keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-    50% {
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 0 8px rgba(30, 60, 114, 0.1);
-    }
-}
-
-.profile-image img {
-    animation: pulse 3s infinite;
+/* Media Queries pour la réactivité */
+@media (max-width: 420px) {
+  body {
+    padding: var(--spacing-sm); /* Moins de padding sur les très petits écrans */
+  }
+  .profile-card {
+    margin: 0 5px; /* Marge latérale plus petite sur les très petits écrans */
+  }
+  .card-body {
+    padding: calc(var(--spacing-md) + 40px) var(--spacing-sm) var(--spacing-md) var(--spacing-sm); /* Ajustement du padding */
+  }
+  .card-body .name {
+    font-size: 1.6em;
+  }
+  .card-body .title {
+    font-size: 1em;
+  }
+  .section-title,
+  .social-links-container,
+  .address-section {
+    padding: 0 var(--spacing-sm); /* Ajustement du padding pour les sections */
+  }
+  .social-link {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
 }
